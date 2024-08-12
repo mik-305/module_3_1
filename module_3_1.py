@@ -1,34 +1,36 @@
-def count_calls():
-    global calls
+def count_calls():                                      # Функция - счётчик
+    global calls                                        # Глобальная переменная
     calls = calls + 1
     return
 
 def string_info(string):
-    print('Содержимое вх. строки: ',string, 'Длина вх. строки: ', len(string))
-    string_out = string.upper() +' + '+ string.lower()
-    print(string_out)
+    print('Входная строка: ', string)
     count_calls()
+    my_kort = len(string), string.upper(), string.lower()
+    print(my_kort, ' - Полученный кортеж' )
     return
 
 def is_contains(string, list_to_search):
     count_calls()
-    string = input('Введите строку символов: ')
-    if string in list_to_search:
+    print('Список для поиска: ', list_to_search)
+    lst_to_sch_upp = []
+    for i in range(len(list_to_search)):
+        lst_to_sch_upp.append(list_to_search[i].upper())    # Переводим весь список в верхний регистр
+    if string.upper() in lst_to_sch_upp:
         rez = True
     else:
         rez = False
-
-    #rez = is_contains(string, list_to_search)
+    print(rez)
+    print('----------------')
     return rez
 
-
 calls = 0
-string = ''
-list_to_search = ['Urban', 'URBAN', 'urban', 'Москва']
-#rez = ''
-#rez = is_contains(string, list_to_search)
-#print(rez)
-count_calls()
-string = input('ВВЕДИТЕ СТРОКУ СИМВОЛОВ: ')
+string = 'd2d'
+list_to_search = ['D2d','F3a','AAAa','Good','a1A']
 string_info(string)
-print('Количество вызовов функции Count_Calls: ',calls)
+is_contains(string, list_to_search)
+string = 'd21'
+list_to_search = ['22d','A3a','mAAa','Food','C1A']
+string_info(string)
+is_contains(string, list_to_search)
+print('Количество вызовов : ',calls)
